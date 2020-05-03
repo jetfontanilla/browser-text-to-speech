@@ -75,17 +75,22 @@ button:focus {
 .section {
 	display: flex;
 	width: 100%;
-	max-width: 60rem;
+	max-width: 60em;
+}
+
+.centered {
+	justify-content: center;
+	align-items: center;
 }
 
 .phrase {
 	width: 100%;
-	min-height: 8rem;
+	min-height: 8em;
 }
 
 .voices {
 	flex-grow: 3;
-	margin-right: 1rem;
+	margin-right: 1em;
 }
 
 .primary {
@@ -94,4 +99,73 @@ button:focus {
 	color: #fff;
 	font-weight: bold;
 	cursor: pointer;
+}
+
+.lds-grid {
+	display: inline-block;
+	position: relative;
+	width: 5em;
+	height: 5em;
+	margin-right: 1em;
+}
+.lds-grid div {
+	position: absolute;
+	width: 1em;
+	height: 1em;
+	border-radius: 50%;
+	background: steelblue;
+	animation: lds-grid 1.2s linear infinite;
+}
+.lds-grid div:nth-child(1) {
+	top: 0.5em;
+	left: 0.5em;
+	animation-delay: 0s;
+}
+.lds-grid div:nth-child(2) {
+	top: 0.5em;
+	left: 2em;
+	animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(3) {
+	top: 0.5em;
+	left: 3.5em;
+	animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(4) {
+	top: 2em;
+	left: 0.5em;
+	animation-delay: -0.4s;
+}
+.lds-grid div:nth-child(5) {
+	top: 2em;
+	left: 2em;
+	animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(6) {
+	top: 2em;
+	left: 3.5em;
+	animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(7) {
+	top: 3.5em;
+	left: 0.5em;
+	animation-delay: -0.8s;
+}
+.lds-grid div:nth-child(8) {
+	top: 3.5em;
+	left: 2em;
+	animation-delay: -1.2s;
+}
+.lds-grid div:nth-child(9) {
+	top: 3.5em;
+	left: 3.5em;
+	animation-delay: -1.6s;
+}
+@keyframes lds-grid {
+	0%, 100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0.5;
+	}
 }
