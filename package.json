@@ -1,5 +1,5 @@
 {
-  "name": "Speech Synthesis API Demo",
+  "name": "speech-synthesis-tts-demo",
   "version": "1.0.0",
   "scripts": {
     "build": "rollup -c",
@@ -18,5 +18,6 @@
   },
   "dependencies": {
     "sirv-cli": "^0.4.4"
-  }
+  },
+  "private": true
 }

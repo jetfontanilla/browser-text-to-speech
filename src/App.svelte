@@ -1,10 +1,4 @@
-<svelte:head>
-    <title>Speech Synthesis Demo</title>
-</svelte:head>
-
 <script>
-    import Button, {Label} from "@smui/button";
-    
     const isTextToSpeechEnabled = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
     let text = "";
     let selectedVoiceIndex = 0;
@@ -24,23 +18,30 @@
 </script>
 
 
-{#if isTextToSpeechEnabled}
-    <input bind:value={text} placeholder="Enter a phrase..."/>
+<div class="container">
+    {#if isTextToSpeechEnabled}
+        <div class="section">
+            <textarea class="phrase" bind:value={text} placeholder="Enter a phrase..."></textarea>
+        </div>
 
-    <select bind:value={selectedVoiceIndex}>
-        {#each availableVoices as {name, lang}, index}
-            <option value={index}>
-                {name} - {lang}
-            </option>
-        {/each}
-    </select>
+        <div class="section">
+            <select class="voices" bind:value={selectedVoiceIndex}>
+                {#each availableVoices as {name, lang}, index}
+                    <option value={index}>
+                        {name} - {lang}
+                    </option>
+                {/each}
+            </select>
 
-    <Button on:click={utterText} variant="unelevated" color="primary">
-        <Label>Play Phrase</Label>
-    </Button>
-{:else}
-    <h2>Speech to text not supported by your browser</h2>
-{/if}
+            <button class="primary" on:click={utterText}>
+                <span>Play Phrase</span>
+            </button>
+        </div>
+    {:else}
+        <h2>Speech to text not supported by your browser</h2>
+    {/if}
+</div>
+
 
 
 
