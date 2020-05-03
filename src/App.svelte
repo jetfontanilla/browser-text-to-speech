@@ -1,5 +1,5 @@
 <script>
-    const isTextToSpeechEnabled = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
+    let isTextToSpeechEnabled = "speechSynthesis" in window && "SpeechSynthesisUtterance" in window;
     let text = "";
     let selectedVoiceIndex = 0;
     let speechSynth = window.speechSynthesis;
@@ -12,14 +12,49 @@
     }
 
     // window.speechSynthesis.getVoices() is an async task. invoking it immediately returns an empty array
-    setTimeout(() => {
-        availableVoices = isTextToSpeechEnabled ? speechSynth.getVoices() : [];
-    }, 1000);
+    function initializeSpeechSynth() {
+        setTimeout(() => {
+            availableVoices = speechSynth.getVoices();
+            if (availableVoices.length === 0) {
+                if (retries > 0) {
+                    retries -= 1;
+                    initializeSpeechSynth();
+                } else {
+                    isLoading = false;
+                    isTextToSpeechEnabled = false;
+                }
+            } else {
+                isLoading = false;
+            }
+        }, 1000);
+    }
+
+    let retries = 3;
+    let isLoading = isTextToSpeechEnabled;
+    if (isTextToSpeechEnabled) {
+        initializeSpeechSynth();
+    }
+
 </script>
 
 
 <div class="container">
-    {#if isTextToSpeechEnabled}
+    {#if isLoading}
+        <div class="section centered">
+            <div class="lds-grid">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+            <div>Fetching available voices...</div>
+        </div>
+    {:else if isTextToSpeechEnabled}
         <div class="section">
             <textarea class="phrase" bind:value={text} placeholder="Enter a phrase..."></textarea>
         </div>
@@ -38,7 +73,7 @@
             </button>
         </div>
     {:else}
-        <h2>Speech to text not supported by your browser</h2>
+        <h2>Speech to text is not supported by your browser</h2>
     {/if}
 </div>
 
