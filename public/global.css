@@ -17,6 +17,10 @@ a {
 	text-decoration: none;
 }
 
+h2 {
+	margin: 0;
+}
+
 a:hover {
 	text-decoration: underline;
 }
@@ -74,12 +78,22 @@ button:focus {
 
 .section {
 	display: flex;
+	flex-wrap: wrap;
 	width: 100%;
 	max-width: 60em;
 }
 
+.heading-section {
+	margin-bottom: 3em;
+}
+
 .centered {
 	justify-content: center;
+	align-items: center;
+}
+
+.between {
+	justify-content: space-between;
 	align-items: center;
 }
 

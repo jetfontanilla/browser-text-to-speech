@@ -13,7 +13,6 @@
 
     // window.speechSynthesis.getVoices() is an async task. invoking it immediately returns an empty array
     function initializeSpeechSynth() {
-        console.log(retries);
         setTimeout(() => {
             availableVoices = speechSynth.getVoices();
             if (availableVoices.length === 0) {
@@ -74,7 +73,7 @@
             </button>
         </div>
     {:else}
-        <h2>Speech to text not supported by your browser</h2>
+        <h2>Speech to text is not supported by your browser</h2>
     {/if}
 </div>
 
