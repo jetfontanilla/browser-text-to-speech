@@ -95,6 +95,7 @@ button:focus {
 .between {
 	justify-content: space-between;
 	align-items: center;
+	flex-wrap: nowrap;
 }
 
 .phrase {
