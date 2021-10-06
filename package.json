@@ -7,8 +7,8 @@
     "start": "sirv public"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "15.0.0",
-    "@rollup/plugin-node-resolve": "^9.0.0",
+    "@rollup/plugin-commonjs": "16.0.0",
+    "@rollup/plugin-node-resolve": "^10.0.0",
     "@smui/button": "^1.0.0-beta.21",
     "rollup": "^2.27.1",
     "rollup-plugin-livereload": "^2.0.0",
